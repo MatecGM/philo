@@ -6,11 +6,12 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 18:00:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/21 23:04:04 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/23 18:37:43 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
+#include <pthread.h>
 
 t_bool	arg_error(int argc, char **argv)
 {
@@ -22,52 +23,25 @@ t_bool	arg_error(int argc, char **argv)
 	return (FALSE);
 }
 
-pthread_mutex_t	*init_fork(int nb_philo)
-{
-	pthread_mutex_t	*forks;
-	int				i; 
-
-	forks = ft_calloc(nb_philo + 1, sizeof(pthread_mutex_t));
-	while (i < nb)
-	{
-		forks[i] = pthread_mutex_init(&(forks[i]), NULL);
-		i ++;
-	}
-	return (forks);
-}
-
-void	create_philo(char **argv, t_data data)
-{
-	int		nb;
-	int		i;
-	t_philo	*philo;
-
-	nb = ft_atoi(argv[1]);
-	i = 0;
-	philo = ft_calloc(nb + 1, sizeof(t_philo)); 
-	while (i < nb)
-	{
-		
-	}
-}
-
-t_data	init_data(char **argv)
-{
-	t_data	data;
-
-	data->time_die = ft_atoi(argv[2]);
-	data->time_eat = ft_atoi(argv[3]);
-	data->time_sleep = ft_atoi(argv[4]);
-	return (data);
-}
 
 int	main(int argc, char **argv)
 {
-	t_data	data;
+	t_data		data;
+	t_status	status[1];
+	t_fork		*fork;
+	t_philo		*philo;
+	int			nb_philo;
+	
 	printf("avant thread\n");
 	// if (arg_error(argc, argv))
 	// 	return (1);
+	nb_philo = ft_atoi(argv[1]);
 	data = init_data(argv);
+	fork = init_fork(nb_philo);
+	init_status(status);
+	philo = init_philo(data, fork, status, nb_philo);
+	philo_thread_join(philo, nb_philo);
+	free(fork);
 	printf("apres thread\n");
 	return (0);
 }

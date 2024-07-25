@@ -6,12 +6,12 @@
 #    By: mbico <mbico@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 15:23:49 by fparis            #+#    #+#              #
-#    Updated: 2024/07/18 11:24:23 by mbico            ###   ########.fr        #
+#    Updated: 2024/07/23 18:45:13 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = #-Wall -Wextra -Werror
+CFLAGS = -g #-Wall -Wextra -Werror
 NAME = philo
 HEADER = headers
 
@@ -19,8 +19,11 @@ SRC_DIR = srcs
 OBJ_DIR = obj
 
 SRCS = main.c\
+		init.c\
+		thread.c\
 		utils/ft_calloc.c\
 		utils/ft_atoi.c\
+		utils/mutex_utils.c\
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
