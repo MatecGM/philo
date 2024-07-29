@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 18:00:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/23 18:37:43 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/29 02:40:09 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,15 @@ int	main(int argc, char **argv)
 	t_philo		*philo;
 	int			nb_philo;
 	
-	printf("avant thread\n");
 	// if (arg_error(argc, argv))
 	// 	return (1);
 	nb_philo = ft_atoi(argv[1]);
-	data = init_data(argv);
+	data = init_data(argv, argc);
 	fork = init_fork(nb_philo);
 	init_status(status);
 	philo = init_philo(data, fork, status, nb_philo);
 	philo_thread_join(philo, nb_philo);
 	free(fork);
-	printf("apres thread\n");
 	return (0);
 }
 
