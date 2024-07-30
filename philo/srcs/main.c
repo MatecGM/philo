@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 18:00:03 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/30 19:13:14 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/30 19:53:22 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_bool	arg_error(int argc, char **argv)
 		return (TRUE);
 	}
 	else if (ft_atoi(argv[2]) <= 0 || ft_atoi(argv[3]) <= 0
-		|| ft_atoi(argv[4]) <= 0 || (argc == 6 && ft_atoi(argv[2]) <= 0))
+		|| ft_atoi(argv[4]) <= 0 || (argc == 6 && ft_atoi(argv[5]) <= 0))
 	{
 		ft_putstr_fd("arg error : args need to be greater than 0\n", 2);
 		return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:32:35 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/30 19:23:21 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/30 20:29:56 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,22 @@ t_bool	someone_died(t_philo *philo, unsigned int s_time, int nb_meal)
 void	*routine(void *arg)
 {
 	t_philo			*philo;
-	unsigned int	s_time;
 	int				nb_meal;
 
-	usleep(10000);
 	philo = (t_philo *)arg;
 	nb_meal = philo->data.nb_meal;
 	if (philo->id % 2 == 1)
 		usleep(500);
-	s_time = time_now();
 	while (1)
 	{
-		if (take_fork(philo, s_time))
+		if (take_fork(philo, philo->data.time, nb_meal))
 		{
-			if (eating(philo, s_time, &nb_meal)
-				|| sleeping(philo, s_time, nb_meal)
-				|| thinking(philo, s_time, nb_meal))
+			if (eating(philo, philo->data.time, &nb_meal)
+				|| sleeping(philo, philo->data.time, nb_meal)
+				|| thinking(philo, philo->data.time, nb_meal))
 				break ;
 		}
-		else if (waiting(philo, s_time, nb_meal))
+		else if (waiting(philo, philo->data.time, nb_meal))
 			break ;
 	}
 	pthread_exit(NULL);

@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:53:05 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/30 19:02:55 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/30 20:23:28 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,12 @@ typedef struct s_status
 
 typedef struct s_data
 {
-	int			time_die;
-	int			time_eat;
-	int			time_sleep;
-	int			nb_meal;
+	int				time_die;
+	int				time_eat;
+	int				time_sleep;
+	t_bool			alone;
+	int				nb_meal;
+	unsigned int	time;
 }	t_data;
 
 typedef struct s_philo
@@ -71,7 +73,7 @@ int				ft_strisint(char *str);
 void			ft_putstr_fd(char *s, int fd);
 
 //ACTION
-t_bool			take_fork(t_philo *philo, unsigned int s_time);
+t_bool			take_fork(t_philo *philo, unsigned int s_time, int nb_meal);
 t_bool			eating(t_philo *philo, unsigned int s_time, int *nb_meal);
 t_bool			thinking(t_philo *philo, unsigned int s_time, int nb_meal);
 t_bool			waiting(t_philo *philo, unsigned int s_time, int nb_meal);
