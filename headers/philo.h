@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:53:05 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/29 02:40:17 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/30 19:02:55 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,28 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-typedef	enum	e_bool 
+typedef enum e_bool
 {
 	ERROR = -1,
 	FALSE,
 	TRUE,
 }	t_bool;
 
-typedef	struct	s_fork
+typedef struct s_fork
 {
 	int				fork;
 	pthread_mutex_t	mtx_fork;
 }	t_fork;
 
-
-typedef	struct	s_status
+typedef struct s_status
 {
 	t_bool			died;
 	pthread_mutex_t	dmutex;
 	pthread_mutex_t	print;
-	
+
 }	t_status;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	int			time_die;
 	int			time_eat;
@@ -65,17 +64,30 @@ void			*ft_calloc(size_t nmemb, size_t size);
 int				ft_atoi(const char *nptr);
 int				mutex_checker(int *nb, pthread_mutex_t *mutex);
 void			mutex_set_int(int *var, int new, pthread_mutex_t *mutex);
-void			mutex_printer(char *msg, t_philo *philo, unsigned int start_time);
+void			mutex_printer(char *msg, t_philo *philo,
+					unsigned int start_time);
 unsigned int	time_now(void);
+int				ft_strisint(char *str);
+void			ft_putstr_fd(char *s, int fd);
+
+//ACTION
+t_bool			take_fork(t_philo *philo, unsigned int s_time);
+t_bool			eating(t_philo *philo, unsigned int s_time, int *nb_meal);
+t_bool			thinking(t_philo *philo, unsigned int s_time, int nb_meal);
+t_bool			waiting(t_philo *philo, unsigned int s_time, int nb_meal);
+t_bool			sleeping(t_philo *philo, unsigned int s_time, int nb_meal);
 
 //INIT
-t_fork	*init_fork(int nb_philo);
-t_data	init_data(char **argv, int argc);
-void	init_status(t_status *status);
-t_philo	*init_philo(t_data data, t_fork *fork, t_status *status, int nb_philo);
+t_fork			*init_fork(int nb_philo);
+t_data			init_data(char **argv, int argc);
+void			init_status(t_status *status);
+t_philo			*init_philo(t_data data, t_fork *fork, t_status *status,
+					int nb_philo);
 
 //MAIN
-void	*routine(void *arg);
-void	philo_thread_join(t_philo *philo, int nb_philo);
+void			*routine(void *arg);
+void			philo_thread_join(t_philo *philo, int nb_philo);
+t_bool			someone_died(t_philo *philo, unsigned int s_time,
+					int nb_meal);
 
 #endif

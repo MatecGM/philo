@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 18:41:09 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/29 01:58:28 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/30 19:10:21 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	mutex_checker(int *nb, pthread_mutex_t *mutex)
 	pthread_mutex_unlock(mutex);
 	return (value);
 }
+
 void	mutex_set_int(int *var, int new, pthread_mutex_t *mutex)
 {
 	pthread_mutex_lock(mutex);
@@ -30,7 +31,7 @@ void	mutex_set_int(int *var, int new, pthread_mutex_t *mutex)
 
 void	mutex_printer(char *msg, t_philo *philo, unsigned int start_time)
 {
-	unsigned int rel_time;
+	unsigned int	rel_time;
 
 	rel_time = time_now() - start_time;
 	pthread_mutex_lock(&philo->status->print);
