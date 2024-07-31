@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:32:35 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/30 20:29:56 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/31 21:57:09 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_bool	someone_died(t_philo *philo, unsigned int s_time, int nb_meal)
 	}
 	else if (nb_meal == 0)
 	{
-		philo->status->died = TRUE;
+		mutex_set_int(&philo->left->fork, -1, &philo->left->mtx_fork);
+		mutex_set_int(&philo->right->fork, -1, &philo->right->mtx_fork);
 		pthread_mutex_unlock(&philo->status->dmutex);
 		return (TRUE);
 	}

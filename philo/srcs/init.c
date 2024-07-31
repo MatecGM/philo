@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:48:07 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/30 20:25:22 by mbico            ###   ########.fr       */
+/*   Updated: 2024/07/31 21:55:57 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_data	init_data(char **argv, int argc)
 	data.alone = ft_atoi(argv[1]) == 1;
 	data.time = time_now();
 	if (argc == 6)
-		data.nb_meal = ft_atoi(argv[5]) + 1;
+		data.nb_meal = ft_atoi(argv[5]);
 	else
 		data.nb_meal = -1;
 	return (data);
@@ -75,7 +75,8 @@ t_philo	*init_philo(t_data data, t_fork *forks, t_status *status, int nb_philo)
 		philo[i].data = data;
 		give_fork(&philo[i], forks, i, nb_philo);
 		philo[i].status = status;
-		pthread_create(&philo[i].thread, NULL, routine, &(philo[i]));
+		if (pthread_create(&philo[i].thread, NULL, routine, &(philo[i])))
+			return (NULL);
 		i ++;
 	}
 	return (philo);
