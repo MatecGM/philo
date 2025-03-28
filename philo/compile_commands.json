@@ -1,0 +1,178 @@
+[
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/main.c",
+   "-o",
+   "obj/main.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/main.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/init.c",
+   "-o",
+   "obj/init.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/init.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/thread.c",
+   "-o",
+   "obj/thread.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/thread.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/ft_calloc.c",
+   "-o",
+   "obj/utils/ft_calloc.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/ft_calloc.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/ft_atoi.c",
+   "-o",
+   "obj/utils/ft_atoi.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/ft_atoi.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/mutex_utils.c",
+   "-o",
+   "obj/utils/mutex_utils.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/mutex_utils.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/time_utils.c",
+   "-o",
+   "obj/utils/time_utils.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/time_utils.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/ft_strisint.c",
+   "-o",
+   "obj/utils/ft_strisint.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/ft_strisint.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/utils/ft_putstr_fd.c",
+   "-o",
+   "obj/utils/ft_putstr_fd.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/utils/ft_putstr_fd.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/action.c",
+   "-o",
+   "obj/action.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/action.c"
+ },
+ {
+  "directory": "/nfs/homes/mbico/Desktop/philo/philo",
+  "arguments": [
+   "cc",
+   "-Wall",
+   "-Wextra",
+   "-Werror",
+   "-c",
+   "srcs/meal.c",
+   "-o",
+   "obj/meal.o",
+   "-I",
+   "headers"
+  ],
+  "file": "srcs/meal.c"
+ }
+]

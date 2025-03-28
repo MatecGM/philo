@@ -6,13 +6,13 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 23:32:35 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/31 21:57:09 by mbico            ###   ########.fr       */
+/*   Updated: 2024/08/20 16:45:23 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-t_bool	someone_died(t_philo *philo, unsigned int s_time, int nb_meal)
+t_bool	someone_died(t_philo *philo, unsigned int s_time)
 {
 	pthread_mutex_lock(&philo->status->dmutex);
 	if (philo->status->died)
@@ -27,10 +27,9 @@ t_bool	someone_died(t_philo *philo, unsigned int s_time, int nb_meal)
 		pthread_mutex_unlock(&philo->status->dmutex);
 		return (TRUE);
 	}
-	else if (nb_meal == 0)
+	else if (all_meal_clear(philo))
 	{
-		mutex_set_int(&philo->left->fork, -1, &philo->left->mtx_fork);
-		mutex_set_int(&philo->right->fork, -1, &philo->right->mtx_fork);
+		philo->status->died = TRUE;
 		pthread_mutex_unlock(&philo->status->dmutex);
 		return (TRUE);
 	}
@@ -49,20 +48,21 @@ void	*routine(void *arg)
 		usleep(500);
 	while (1)
 	{
-		if (take_fork(philo, philo->data.time, nb_meal))
+		if (take_fork(philo, philo->data.time))
 		{
 			if (eating(philo, philo->data.time, &nb_meal)
-				|| sleeping(philo, philo->data.time, nb_meal)
-				|| thinking(philo, philo->data.time, nb_meal))
+				|| sleeping(philo, philo->data.time)
+				|| thinking(philo, philo->data.time))
 				break ;
 		}
-		else if (waiting(philo, philo->data.time, nb_meal))
+		else if (waiting(philo, philo->data.time))
 			break ;
 	}
-	pthread_exit(NULL);
+	return (NULL);
 }
 
-void	philo_thread_join(t_philo *philo, int nb_philo)
+void	philo_thread_join(t_philo *philo, int nb_philo,
+	t_fork *fork, t_status *status)
 {
 	int	i;
 
@@ -73,4 +73,6 @@ void	philo_thread_join(t_philo *philo, int nb_philo)
 		i ++;
 	}
 	free(philo);
+	free(fork);
+	free(status->mealcount);
 }

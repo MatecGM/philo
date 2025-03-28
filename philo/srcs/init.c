@@ -6,7 +6,7 @@
 /*   By: mbico <mbico@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/22 20:48:07 by mbico             #+#    #+#             */
-/*   Updated: 2024/07/31 21:55:57 by mbico            ###   ########.fr       */
+/*   Updated: 2024/08/20 16:39:06 by mbico            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,14 @@ t_data	init_data(char **argv, int argc)
 	return (data);
 }
 
-void	init_status(t_status *status)
+t_bool	init_status(t_status *status, char *nb)
 {
 	status->died = FALSE;
-	pthread_mutex_init(&status->dmutex, NULL);
-	pthread_mutex_init(&status->print, NULL);
+	if (pthread_mutex_init(&status->dmutex, NULL)
+		|| pthread_mutex_init(&status->print, NULL)
+		|| init_meal_checker(status, ft_atoi(nb)))
+		return (TRUE);
+	return (FALSE);
 }
 
 t_fork	*init_fork(int nb_philo)
@@ -46,7 +49,8 @@ t_fork	*init_fork(int nb_philo)
 	i = 0;
 	while (i < nb_philo)
 	{
-		pthread_mutex_init(&forks[i].mtx_fork, NULL);
+		if (pthread_mutex_init(&forks[i].mtx_fork, NULL))
+			return (NULL);
 		forks[i].fork = -1;
 		i ++;
 	}

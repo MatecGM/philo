@@ -6,12 +6,12 @@
 #    By: mbico <mbico@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 15:23:49 by fparis            #+#    #+#              #
-#    Updated: 2024/07/30 19:03:11 by mbico            ###   ########.fr        #
+#    Updated: 2024/08/20 16:42:24 by mbico            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 NAME = philo
 HEADER = headers
 
@@ -28,6 +28,7 @@ SRCS = main.c\
 		utils/ft_strisint.c\
 		utils/ft_putstr_fd.c\
 		action.c\
+		meal.c\
 
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
